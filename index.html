@@ -12,8 +12,9 @@
 </head>
 <body>
 
+<a id="top"></a>
 <!-- ===== HEADER ===== -->
-<header class="site-header" id="top">
+<header class="site-header">
   <div class="container header-inner">
     <a href="#top" class="brand">
       <img src="images/logo.png" alt="Go-Log" class="brand-logo">
@@ -23,6 +24,7 @@
       <a href="#about">О компании</a>
       <a href="#route">Маршруты</a>
       <a href="#contacts">Контакты</a>
+      <a href="#requisites">Реквизиты</a>
     </nav>
     <a href="tel:+79399194507" class="header-phone">
       <span class="phone-label">Звонок по России</span>
@@ -38,7 +40,7 @@
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="container hero-inner">
       <p class="eyebrow">Новороссийск &mdash; Россия &mdash; СНГ</p>
-      <h1>Любой груз в любое место любым видом транспорта на выгодных условиях.</h1>
+      <h1>Любой груз, в любое место, любым видом транспорта на выгодных условиях.</h1>
       <p class="hero-lede">Предлагаем оптимальные по стоимости и срокам комплексные транспортные решения, для доставки вашего груза, отвечая за его сохранность, строго контролируя на всех участках маршрута.</p>
       <div class="hero-actions">
         <a href="#request" class="btn btn-primary">Рассчитать стоимость перевозки</a>
@@ -57,27 +59,19 @@
     <div class="container">
       <p class="section-eyebrow">География работы</p>
       <h2>Из порта Новороссийска &mdash; в любую точку маршрута</h2>
-      <div class="route-line" role="img" aria-label="Маршрутная схема: Новороссийск, морской терминал, таможенный пост, склад временного хранения, пункт назначения по России или за рубежом">
-        <svg viewBox="0 0 1000 120" preserveAspectRatio="none" class="route-svg" aria-hidden="true">
-          <line x1="40" y1="60" x2="960" y2="60" stroke="currentColor" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/>
-        </svg>
-        <div class="route-points">
-          <div class="route-point">
-            <span class="route-dot route-dot--origin"></span>
-            <span class="route-point-label">Новороссийск<br><small>офис и склад</small></span>
-          </div>
-          <div class="route-point">
-            <span class="route-dot"></span>
-            <span class="route-point-label">Морской терминал<br><small>фрахт</small></span>
-          </div>
-          <div class="route-point">
-            <span class="route-dot"></span>
-            <span class="route-point-label">Таможня<br><small>оформление, транзит</small></span>
-          </div>
-          <div class="route-point">
-            <span class="route-dot route-dot--dest"></span>
-            <span class="route-point-label">Пункт назначения<br><small>РФ, СНГ, мир</small></span>
-          </div>
+    </div>
+    <div class="route-line-full" role="img" aria-label="Маршрутная схема: экспорт слева, импорт справа, место для стрелок посередине">
+      <div class="route-line-content">
+        <div class="route-point route-point--export">
+          <span class="route-dot route-dot--origin"></span>
+          <span class="route-point-label">Экспорт</span>
+        </div>
+        <div class="route-graphic">
+          <img src="images/route-placeholder.png" alt="Место для схемы маршрута" class="route-graphic__img" loading="lazy" />
+        </div>
+        <div class="route-point route-point--import">
+          <span class="route-dot route-dot--dest"></span>
+          <span class="route-point-label">Импорт</span>
         </div>
       </div>
     </div>
