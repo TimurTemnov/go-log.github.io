@@ -271,7 +271,11 @@ section { padding: 96px 0; }
   border-top: 1px solid rgba(255,255,255,0.15);
   flex-wrap: wrap;
 }
-.hero-stats li { display: flex; flex-direction: column; gap: 4px; }
+.hero-stats li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 .stat-num {
   font-family: var(--font-display);
   font-weight: 700;
@@ -886,7 +890,14 @@ section { padding: 96px 0; }
    margin-top: 12px;
  }
 
+/* отменяем вертикальный отступ между карточками внутри секции реквизитов
+   — он добавлял дополнительный отступ ко 2-й и 3-й колонке */
+.requisites-grid .contact-block + .contact-block {
+  margin-top: 0;
+}
+
 /* ---------- Requisites ---------- */
+/* Исправлено: все карточки одинаковой высоты */
 .requisites {
   background: var(--sand-50);
   padding: 64px 0;
@@ -897,63 +908,77 @@ section { padding: 96px 0; }
   color: var(--rust-500);
 }
 
- .requisites-grid {
+.requisites-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 28px;
-  align-items: stretch;
+  align-items: start; /* выравниваем карточки по верхнему краю */
 }
 
- .requisites-grid > .contact-block {
+.requisites-grid > .contact-block { align-self: start; }
+
+.requisites-grid .contact-block {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  align-self: stretch;
+  padding: 28px;
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(17, 23, 30, 0.06);
+  /* height: auto — пусть грид управляет высотой */
+  height: auto;
 }
 
- /* Ensure card interior stretches so all cards equal height */
- .requisites .contact-block {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+.requisites-grid .contact-block h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: var(--navy-900);
+  font-size: clamp(20px, 2.2vw, 26px);
+  line-height: 1.2;
 }
 
- .requisites .contact-block .legal-list {
-  flex: 1 1 auto;
-  margin: 0;
+.requisites-grid .contact-block .legal-list {
+  flex: 1;  /* растягивает список, чтобы заполнить всю доступную высоту карточки */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.requisites .contact-block {
-  background: var(--white);
-  border-radius: 20px;
-  padding: 28px;
-  box-shadow: 0 20px 40px rgba(17, 23, 30, 0.06);
+.requisites-grid .contact-block .legal-list li {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  gap: 4px;
+  font-size: 15.5px;
+  color: var(--ink-900);
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
 }
 
-.requisites .contact-block h2,
-.requisites .contact-block h3 {
-  margin-bottom: 16px;
-  color: var(--navy-900);
+.requisites-grid .contact-block .legal-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
+.requisites-grid .contact-block .legal-list li span {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-600);
+}
+
+/* Убираем старые дублирующие классы, если они были */
+.requisites .contact-block.requisites-card {
+  /* уже переопределено выше */
+  height: auto;
+}
 .requisites .contact-block .legal-list {
+  /* переопределено выше */
   flex: 1;
-}
-
-.requisites .contact-block h2,
-.requisites .contact-block h3 {
-  margin-bottom: 16px;
-  color: var(--navy-900);
-}
-
-.requisites .legal-list li {
-  border-color: var(--line);
 }
 
 /* ---------- Footer ---------- */
