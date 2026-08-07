@@ -3,6 +3,35 @@
 // ===========================================================
 
 document.addEventListener('DOMContentLoaded', function () {
+  function getProjectBaseUrl() {
+    const isGitHubPagesProject = window.location.hostname === 'timurtemnov.github.io' && window.location.pathname.startsWith('/go-log.github.io');
+    return isGitHubPagesProject ? `${window.location.origin}/go-log.github.io/` : `${window.location.origin}/`;
+  }
+
+  function setPolicyLinks() {
+    const personalLink = document.querySelector('a[data-policy-link="personal-data"]');
+    const privacyLink = document.querySelector('a[data-policy-link="privacy"]');
+
+    if (!personalLink && !privacyLink) return;
+
+    const baseUrl = getProjectBaseUrl();
+
+    if (personalLink) personalLink.href = new URL('personal-data/', baseUrl).toString();
+    if (privacyLink) privacyLink.href = new URL('privacy/', baseUrl).toString();
+  }
+
+  function redirectToTrailingSlash() {
+    const path = window.location.pathname;
+    const isProjectSite = window.location.hostname === 'timurtemnov.github.io' && path === '/go-log.github.io';
+
+    if (isProjectSite) {
+      window.location.replace(`${window.location.origin}/go-log.github.io/`);
+    }
+  }
+
+  redirectToTrailingSlash();
+  setPolicyLinks();
+
   const form = document.getElementById('contactForm');
   if (!form) return;
 
