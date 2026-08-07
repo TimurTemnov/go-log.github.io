@@ -647,6 +647,45 @@ section { padding: 96px 0; }
 
 .form-note { font-size: 12.5px; color: var(--ink-600); margin: 0; }
 
+.consent-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px 0 2px;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--ink-600);
+  line-height: 1.5;
+}
+
+.checkbox-row input {
+  margin-top: 4px;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--rust-500);
+  flex-shrink: 0;
+}
+
+.checkbox-row a {
+  color: var(--rust-600);
+  font-weight: 600;
+}
+
+.checkbox-row a:hover {
+  text-decoration: underline;
+}
+
+.request-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .form-success {
   display: none;
   background: #EAF3DE;

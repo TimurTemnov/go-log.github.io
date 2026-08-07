@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule ^personal-data/?$ /personal-data/ [R=301,L]
+RewriteRule ^privacy/?$ /privacy/ [R=301,L]

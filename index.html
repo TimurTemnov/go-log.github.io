@@ -231,9 +231,21 @@
           <textarea name="message" placeholder="Опишите груз и маршрут (необязательно)" rows="3"></textarea>
         </label>
 
-        <button type="submit" class="btn btn-primary btn-block">Отправить заявку</button>
+        <div class="consent-block" role="group" aria-label="Согласия и политика конфиденциальности">
+          <label class="checkbox-row" for="consentPersonalData">
+            <input type="checkbox" id="consentPersonalData" name="consent_personal_data" value="yes">
+            <span>Я даю согласие на обработку персональных данных и подтверждаю, что ознакомился с <a href="/personal-data/" target="_blank" rel="noopener">Согласием на обработку персональных данных</a>.</span>
+          </label>
 
-        <p class="form-note">Нажимая «Отправить», вы соглашаетесь на обработку контактных данных для связи с вами.</p>
+          <label class="checkbox-row" for="consentPolicy">
+            <input type="checkbox" id="consentPolicy" name="consent_policy" value="yes">
+            <span>Я ознакомлен(а) с <a href="/privacy/" target="_blank" rel="noopener">Политикой конфиденциальности</a> и принимаю её условия.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="submitBtn" disabled>Отправить заявку</button>
+
+        <p class="form-note">Чтобы отправить заявку, отметьте оба согласия.</p>
       </form>
     </div>
   </section>

@@ -6,6 +6,24 @@ document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const consentPersonalData = document.getElementById('consentPersonalData');
+  const consentPolicy = document.getElementById('consentPolicy');
+
+  function updateSubmitState() {
+    if (!submitBtn) return;
+    const canSubmit = Boolean(consentPersonalData && consentPolicy && consentPersonalData.checked && consentPolicy.checked);
+    submitBtn.disabled = !canSubmit;
+  }
+
+  if (consentPersonalData && consentPolicy) {
+    [consentPersonalData, consentPolicy].forEach(function (checkbox) {
+      checkbox.addEventListener('change', updateSubmitState);
+    });
+  }
+
+  updateSubmitState();
+
   // Создаём блоки для сообщений об успехе/ошибке (один раз)
   const successBox = document.createElement('div');
   successBox.className = 'form-success';
@@ -24,7 +42,12 @@ document.addEventListener('DOMContentLoaded', function () {
     successBox.classList.remove('is-visible');
     errorBox.classList.remove('is-visible');
 
-    const submitBtn = form.querySelector('button[type="submit"]');
+    if (!consentPersonalData || !consentPolicy || !consentPersonalData.checked || !consentPolicy.checked) {
+      errorBox.textContent = 'Чтобы отправить заявку, отметьте оба согласия.';
+      errorBox.classList.add('is-visible');
+      return;
+    }
+
     const originalBtnText = submitBtn.textContent;
     submitBtn.disabled = true;
     submitBtn.textContent = 'Отправляем...';
@@ -39,17 +62,21 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(function (response) {
         if (response.ok) {
           form.reset();
+          updateSubmitState();
           successBox.classList.add('is-visible');
         } else {
+          errorBox.textContent = 'Не удалось отправить заявку. Попробуйте ещё раз или позвоните нам по телефону.';
           errorBox.classList.add('is-visible');
         }
       })
       .catch(function () {
+        errorBox.textContent = 'Не удалось отправить заявку. Попробуйте ещё раз или позвоните нам по телефону.';
         errorBox.classList.add('is-visible');
       })
       .finally(function () {
         submitBtn.disabled = false;
         submitBtn.textContent = originalBtnText;
+        updateSubmitState();
       });
   });
 });
