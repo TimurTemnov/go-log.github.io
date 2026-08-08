@@ -629,6 +629,24 @@ section { padding: 96px 0; }
   gap: 18px;
 }
 
+.request-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  margin-top: 4px;
+}
+
+.request-links a {
+  font-size: 13px;
+  color: var(--rust-600);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.request-links a:hover {
+  text-decoration: underline;
+}
+
 .field { display: flex; flex-direction: column; gap: 8px; }
 .field span {
   font-family: var(--font-head);
