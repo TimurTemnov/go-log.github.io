@@ -603,6 +603,14 @@ section { padding: 96px 0; }
 
 .request { background: var(--sand-50); }
 
+.yandex-form-iframe {
+  width: 100%;
+  min-height: 620px;
+  border: 0;
+  display: block;
+  overflow: hidden;
+}
+
 .request-grid {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -615,7 +623,7 @@ section { padding: 96px 0; }
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 36px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 18px;
